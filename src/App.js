@@ -15,15 +15,14 @@ import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, useTheme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
+
+import Home from "./views/home";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
-  palette: {
-    type: "dark"
-  },
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex"
   },
@@ -31,6 +30,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
       flexShrink: 0
+    },
+    paper: {
+      palette: { type: "dark" }
     }
   },
   appBar1: {
@@ -88,7 +90,13 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {["Home", "Contact", "Skills", "Hobby"].map((text, index) => (
-          <ListItem button key={text} component={Link} to={"/" + text}>
+          <ListItem
+            className={classes.listItem}
+            button
+            key={text}
+            component={Link}
+            to={"/" + text}
+          >
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
@@ -155,8 +163,8 @@ function ResponsiveDrawer(props) {
           <div className={classes.toolbar} />
 
           <Switch>
-            <Route exact path="/" render={() => <div>Home Page</div>} />
-            <Route path="/home" render={() => <div> Page home</div>} />
+            <Route exact path="/" render={() => <Home />} />
+            <Route path="/home" render={() => <Home />} />
             <Route path="/contact" render={() => <div>Page contact</div>} />
           </Switch>
         </main>
