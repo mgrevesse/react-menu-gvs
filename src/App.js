@@ -30,12 +30,14 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0
     }
   },
-  appBar: {
+  appBar1: {
     marginLeft: drawerWidth,
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`
-    }
+    },
+    width: "100%"
   },
+
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
@@ -49,13 +51,28 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
   }
 }));
 
 function ResponsiveDrawer(props) {
   const { container } = props;
   const classes = useStyles();
-  const theme = useTheme();
+  //const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -100,7 +117,7 @@ function ResponsiveDrawer(props) {
         </Toolbar>
       </AppBar>
       <BrowserRouter>
-        <nav className={classes.drawer} aria-label="mailbox folders">
+        <nav className={classes.drawer}>
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
             <Drawer
