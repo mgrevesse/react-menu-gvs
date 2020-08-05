@@ -68,14 +68,15 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {["Inbox", "Starred"].map((text, index) => (
-          <ListItem key={text} component={Link} to={"/" + text}>
+          <ListItem button key={text} component={Link} to={"/" + text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText style={{ color: "black" }} primary={text} />
           </ListItem>
         ))}
       </List>
+      <Divider />
     </div>
   );
 
@@ -94,7 +95,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            GVS Dev
           </Typography>
         </Toolbar>
       </AppBar>
@@ -105,7 +106,6 @@ function ResponsiveDrawer(props) {
             <Drawer
               container={container}
               variant="temporary"
-              anchor={theme.direction === "rtl" ? "right" : "left"}
               open={mobileOpen}
               onClose={handleDrawerToggle}
               classes={{
