@@ -20,6 +20,7 @@ import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 
 import Home from "./views/Home";
 import Login from "./views/Login";
+import Contact from "./views/Contact";
 
 const drawerWidth = 240;
 
@@ -166,6 +167,7 @@ function ResponsiveDrawer(props) {
           <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route path="/home" render={() => <Home />} />
+            <Route path="/contact" render={() => <Contact />} />
             <Route path="/login" render={() => <Login />} />
             <Route path="/contact" render={() => <div>Page contact</div>} />
           </Switch>

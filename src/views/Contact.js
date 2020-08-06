@@ -1,11 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Form, Field } from "react-final-form";
 import { TextField, Checkbox, Radio, Select } from "final-form-material-ui";
 import {
   Typography,
   Paper,
-  Link,
   Grid,
   Button,
   CssBaseline,
@@ -89,24 +87,15 @@ const validate = (values) => {
   return errors;
 };
 
-function App() {
+export default function Login(props) {
   return (
     <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
       <CssBaseline />
 
       <Typography variant="h5" align="center" component="h2" gutterBottom>
-        Material-UI Example
+        Contact
       </Typography>
-      <Typography paragraph>
-        <Link href="https://github.com/erikras/react-final-form#-react-final-form">
-          Read Docs
-        </Link>
-        . This example demonstrates using{" "}
-        <Link href="https://material-ui.com/demos/text-fields/">
-          Material-UI
-        </Link>{" "}
-        form controls.
-      </Typography>
+
       <Form
         onSubmit={onSubmit}
         initialValues={{ employed: true, stooge: "larry" }}
@@ -321,5 +310,3 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(<App />, document.querySelector("#root"));
