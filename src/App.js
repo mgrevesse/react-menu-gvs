@@ -18,7 +18,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 
-import Home from "./views/home";
+import Home from "./views/Home";
+import Login from "./views/Login";
 
 const drawerWidth = 240;
 
@@ -89,7 +90,7 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {["Home", "Contact", "Skills", "Hobby"].map((text, index) => (
+        {["Home", "Contact", "Skills", "Hobby", "Login"].map((text, index) => (
           <ListItem
             className={classes.listItem}
             button
@@ -165,6 +166,7 @@ function ResponsiveDrawer(props) {
           <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route path="/home" render={() => <Home />} />
+            <Route path="/login" render={() => <Login />} />
             <Route path="/contact" render={() => <div>Page contact</div>} />
           </Switch>
         </main>
